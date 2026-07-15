@@ -11,6 +11,11 @@
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <style>
+      /* Responsive image improvements */
+      img { max-width: 100%; height: auto; display: block; }
+      .product img { object-fit: cover; width: 100%; height: 180px; border-radius: 6px; }
+      @media (max-width: 480px) { .product img { height: 140px; } }
+
       body {
           font-family: Arial, sans-serif;
           margin: 5px;
@@ -120,7 +125,7 @@
     <!-- Fixes applied: added correct charset and viewport, moved header into body, sanitized input IDs to be lowercase and hyphen-separated. -->
 
     <header>
-        <img src="images/placeholder.svg" alt="Mishella banner" style="max-width:100%; height:auto; margin-bottom:12px;">
+        <img src="images/BCO.6ee6c038-784e-456a-aa50-f0e14c8a2913.png" alt="Mishella banner" style="max-width:100%; height:auto; margin-bottom:12px;" loading="lazy">
         <h1>Mishella’s Premium Caps & Accessories</h1>
         <p>Best Brands. Great Prices. PNG Pride Collection.</p>
     </header>
@@ -139,49 +144,49 @@
 
     <section id="products" class="products">
     <div class="product">
-        <img src="images/placeholder.svg" alt="PNG Pride Cap" style="width:100%; height:auto; border-radius:6px;">
+        <img src="images/Copilot_20260713_142544.png" alt="PNG Pride Cap" loading="lazy">
         <h3>Caps</h3>
         <p>PGK 50</p>
         <input type="number" id="qty-caps" value="1" min="1">
         <button class="button" onclick="addToCart('Caps', 50, document.getElementById('qty-caps').value)">Add to Cart</button>
     </div>
         <div class="product">
-        <img src="images/placeholder.svg" alt="Premium Bag" style="width:100%; height:auto; border-radius:6px;">
+        <img src="images/Copilot_20260715_143417.png" alt="Premium Bag" loading="lazy">
         <h3>Ladies Premium Hand Bags</h3>
         <p>PGK 45</p>
         <input type="number" id="qty-ladies-premium-hand-bag" value="1" min="1">
         <button class="button" onclick="addToCart('Ladies Premium Hand Bag', 45, document.getElementById('qty-ladies-premium-hand-bag').value)">Add to Cart</button>
     </div>
          <div class="product">
-        <img src="images/placeholder.svg" alt="Lipstick" style="width:100%; height:auto; border-radius:6px;">
+        <img src="images/Copilot_20260713_144433.png" alt="Lipstick" loading="lazy">
         <h3>Lipsticks</h3>
         <p>PGK 10</p>
         <input type="number" id="qty-lipsticks" value="1" min="1">
         <button class="button" onclick="addToCart('Lipsticks', 10, document.getElementById('qty-lipsticks').value)">Add to Cart</button>
     </div>
         <div class="product">
-        <img src="images/placeholder.svg" alt="Deodorant Sprays" style="width:100%; height:auto; border-radius:6px;">
+        <img src="images/Copilot_20260713_144023.png" alt="Deodorant Sprays" loading="lazy">
         <h3>Deodorant Sprays</h3>
         <p>PGK 40</p>
         <input type="number" id="qty-deodorant-sprays" value="1" min="1">
         <button class="button" onclick="addToCart('Deodorant Sprays', 40, document.getElementById('qty-deodorant-sprays').value)">Add to Cart</button>
         </div>
         <div class="product">
-            <img src="images/placeholder.svg" alt="Black Bag" style="width:100%; height:auto; border-radius:6px;">
+            <img src="images/Copilot_20260713_145004.png" alt="Black Bag" loading="lazy">
             <h3>Ladies handbag (black)</h3>
             <p>PGK 30</p>
             <input type="number" id="qty-ladies-handbag-black-1" value="1" min="1">
             <button class="button" onclick="addToCart('Ladies Hand bag(Black)', 30, document.getElementById('qty-ladies-handbag-black-1').value)">Add to Cart</button>
         </div>
        <div class="product">
-            <img src="images/placeholder.svg" alt="Black Bag" style="width:100%; height:auto; border-radius:6px;">
+            <img src="images/Copilot_20260713_145554.png" alt="Black Bag" loading="lazy">
             <h3>Ladies handbag (black)</h3>
             <p>PGK 30</p>
             <input type="number" id="qty-ladies-handbag-black-2" value="1" min="1">
             <button class="button" onclick="addToCart('Ladies Hand bag(Black)', 30, document.getElementById('qty-ladies-handbag-black-2').value)">Add to Cart</button>
         </div>
         <div class="product">
-            <img src="images/placeholder.svg" alt="Black Bag" style="width:100%; height:auto; border-radius:6px;">
+            <img src="images/Copilot_20260713_145917.png" alt="Black Bag" loading="lazy">
             <h3>Ladies handbag (black)</h3>
             <p>PGK 30</p>
             <input type="number" id="qty-ladies-handbag-black-3" value="1" min="1">
@@ -244,63 +249,4 @@
         <p>Mishella’s Premium Caps & Accessories brings you stylish, affordable products designed for PNG pride and everyday fashion. We specialize in premium caps, bags, and beauty accessories.</p>
     </section>
 
-    <section id="contact" style="text-align:center; padding:30px;">
-        <h2>Contact Us</h2>
-        <p><img src="images/placeholder.svg" alt="WhatsApp" style="width:20px; height:20px; vertical-align:middle; margin-right:8px;"> WhatsApp: +675-79424444</p>
-        <p>📧 Email: unumbamishella301@gmail.com</p>
-        <p>📍 Location: Madang, Papua New Guinea</p>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 Mishella’s Premium Caps & Accessories. All rights reserved.</p>
-    </footer>
-
-    <script>
-        let cart = [];
-        let total = 0;
-
-        function addToCart(item, price, qty) {
-            qty = parseInt(qty);
-            cart.push({name: item, price: price, qty: qty});
-            total += price * qty;
-            renderCart();
-        }
-
-        function removeFromCart(index) {
-            total -= cart[index].price * cart[index].qty;
-            cart.splice(index, 1);
-            renderCart();
-        }
-
-        function renderCart() {
-            if (cart.length === 0) {
-                document.getElementById('cart-items').innerHTML = "No items added yet.";
-                document.getElementById('cart-total').innerHTML = "<strong>Total: PGK 0</strong>";
-                document.getElementById('checkout').href = "#";
-                return;
-            }
-
-            let cartHTML = "";
-            cart.forEach((item, index) => {
-                cartHTML += item.name + " (x" + item.qty + ") - PGK " + (item.price * item.qty) +
-                    " <button class='remove-button' onclick='removeFromCart(" + index + ")'>Remove</button><br>";
-            });
-
-            document.getElementById('cart-items').innerHTML = cartHTML;
-            document.getElementById('cart-total').innerHTML = "<strong>Total: PGK " + total + "</strong>";
-            updateCheckout();
-        }
-
-        function updateCheckout() {
-            let message = "Hi Mishella, I would like to place an order on the following items:\n";
-            cart.forEach(item => {
-                message += item.name + " (x" + item.qty + ") - PGK " + (item.price * item.qty) + "\n";
-            });
-            message += "Total: PGK " + total;
-            document.getElementById('checkout').href = "https://wa.me/67579424444?text=" + encodeURIComponent(message);
-        }
-    </script>
-
-</body>
-
-</html>
+Continue...
