@@ -430,3 +430,85 @@ function showToast(msg){
 </script>
 </body>
 </html>
+<!-- Mishella AI Assistant Widget -->
+<div id="mishella-ai-chatbox">
+  <div id="chat-header">
+    <h3>💬 Mishella AI Assistant</h3>
+    <p>Here to help you find your perfect cap!</p>
+  </div>
+  <div id="chat-body"></div>
+  <input type="text" id="chat-input" placeholder="Ask about styles, prices, or delivery..." />
+  <button id="send-btn">Send</button>
+</div>
+
+<style>
+  #mishella-ai-chatbox {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 320px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+  }
+  #chat-header {
+    background: linear-gradient(90deg, #d4af37, #000);
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  #chat-body {
+    height: 100px;
+    overflow-y: auto;
+    padding: 10px;
+  }
+  #chat-input {
+    width: 90%;
+    padding: 8px;
+    border: none;
+    border-top: 1px solid #ccc;
+  }
+  #send-btn {
+    width: 30%;
+    background: #25D366;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  const chatBody = document.getElementById('chat-body');
+  const input = document.getElementById('chat-input');
+  const sendBtn = document.getElementById('send-btn');
+
+  function addMessage(sender, text) {
+    const msg = document.createElement('div');
+    msg.innerHTML = `<strong>${sender}:</strong> ${text}`;
+    chatBody.appendChild(msg);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  sendBtn.addEventListener('click', () => {
+    const userText = input.value.trim();
+    if (!userText) return;
+    addMessage('You', userText);
+    input.value = '';
+
+    // Simple AI responses
+    let reply = '';
+    if (userText.toLowerCase().includes('price')) {
+      reply = 'Hi! our premium caps start at K50. You can order directly via WhatsApp for secure payment.';
+    } else if (userText.toLowerCase().includes('delivery')) {
+      reply = 'Hi! we offer fast delivery across Papua New Guinea — usually within 1 business day.';
+    } else if (userText.toLowerCase().includes('style')) {
+      reply = 'Hi! we have Snapbacks, NRL Styles, 9Forty, and limited-edition branded caps. Which style are you interested in?';
+    } else {
+      reply = 'Hi! I can help you with prices, styles, or delivery details. Continue via WhatsApp chat.';
+    }
+
+    setTimeout(() => addMessage('Mishella AI', reply), 800);
+  });
+</script>
