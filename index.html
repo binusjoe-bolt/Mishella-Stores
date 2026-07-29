@@ -430,10 +430,10 @@ function showToast(msg){
 </script>
 </body>
 </html>
-<!-- Mishella's AI Assistant Widget -->
+<<!-- Mishella AI Assistant Widget -->
 <div id="mishella-ai-chatbox">
   <div id="chat-header">
-    <h3>💬 Mishella's AI Assistant</h3>
+    <h3>💬 Mishella AI Assistant</h3>
     <p>Here to help you find your perfect cap!</p>
   </div>
   <div id="chat-body"></div>
@@ -444,7 +444,7 @@ function showToast(msg){
 <style>
   #mishella-ai-chatbox {
     position: fixed;
-    top: 10px;
+    bottom: 20px;
     right: 20px;
     width: 320px;
     background: #fff;
@@ -456,16 +456,16 @@ function showToast(msg){
   #chat-header {
     background: linear-gradient(90deg, #d4af37, #000);
     color: white;
-    padding: 20px;
+    padding: 10px;
     text-align: center;
   }
   #chat-body {
-    height: 300px;
+    height: 280px;
     overflow-y: auto;
     padding: 10px;
   }
   #chat-input {
-    width: 90%;
+    width: 70%;
     padding: 8px;
     border: none;
     border-top: 1px solid #ccc;
@@ -500,13 +500,13 @@ function showToast(msg){
     // Simple AI responses
     let reply = '';
     if (userText.toLowerCase().includes('price')) {
-      reply = 'Hi! our premium caps start at K50. You can order directly via WhatsApp for secure payment.';
+      reply = 'Our premium caps start at K60. You can order directly via WhatsApp for secure payment.';
     } else if (userText.toLowerCase().includes('delivery')) {
-      reply = 'Hi! we offer fast delivery across Papua New Guinea — usually within 1 business day.';
+      reply = 'We offer fast delivery across Papua New Guinea — usually within 3–5 business days.';
     } else if (userText.toLowerCase().includes('style')) {
-      reply = 'Hi! we have Snapbacks, NRL Styles, 9Forty, and limited-edition branded caps. Which style are you interested in?';
+      reply = 'We have Snapbacks, 9Forty, and limited-edition branded caps. Which style are you interested in?';
     } else {
-      reply = 'Hi! I can help you with prices, styles, or delivery details. Continue via WhatsApp chat.';
+      reply = 'I can help you with prices, styles, or delivery details. Type "order" to connect via WhatsApp.';
     }
 
     setTimeout(() => addMessage('Mishella AI', reply), 800);
