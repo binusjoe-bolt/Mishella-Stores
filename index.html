@@ -500,13 +500,13 @@ function showToast(msg){
     // Simple AI responses
     let reply = '';
     if (userText.toLowerCase().includes('price')) {
-      reply = 'Our premium caps start at K60. You can order directly via WhatsApp for secure payment.';
+      reply = 'Hi,our premium caps start at K50. You can order directly via WhatsApp for secure payment.';
     } else if (userText.toLowerCase().includes('delivery')) {
-      reply = 'We offer fast delivery across Papua New Guinea — usually within 3–5 business days.';
+      reply = 'Hi, we offer fast delivery across Papua New Guinea — usually within 3–5 business days.';
     } else if (userText.toLowerCase().includes('style')) {
-      reply = 'We have Snapbacks, 9Forty, and limited-edition branded caps. Which style are you interested in?';
+      reply = 'Hi, we have Snapbacks, NRL Styles, 9Forty, and limited-edition branded caps. Which style are you interested in?';
     } else {
-      reply = 'I can help you with prices, styles, or delivery details. Type "order" to connect via WhatsApp.';
+      reply = 'I can help you with prices, styles, or delivery details. Contine connect via WhatsApp.';
     }
 
     setTimeout(() => addMessage('Mishella AI', reply), 800);
