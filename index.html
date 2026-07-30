@@ -431,14 +431,15 @@ function showToast(msg){
 </body>
 </html>
 <!-- ThunderBolt AI Assistant Widget -->
-<div id="Mishella's - AI">
+<div id="thunderbolt-ai">
   <div id="ai-header">
-    <h3>⚡ Mishella's AI</h3> with
-    <p>Greater Experience while shoping for Premium Caps & Accessories</p>
+    <h3>⚡ ThunderBolt AI</h3>
+    <p>Instant help with Mishella Premium Caps & Accessories</p>
   </div>
   <div id="ai-body"></div>
   <input type="text" id="ai-input" placeholder="Ask about caps, prices, or delivery..." />
   <button id="ai-send">⚡ Ask</button>
+  <button id="ai-whatsapp">📱 Order via WhatsApp</button>
 </div>
 
 <style>
@@ -504,29 +505,61 @@ function showToast(msg){
 
   // WhatsApp direct link (replace with your business number)
   aiWhatsApp.addEventListener('click', () => {
-    window.open('https://wa.me/6759424444?text=Hi%20Mishella,%20I%20want%20to%20order%20a%20cap!', '_blank');
+    window.open('https://wa.me/675XXXXXXXX?text=Hi%20Mishella,%20I%20want%20to%20order%20a%20cap!', '_blank');
   });
 
-  // ThunderBolt AI responses
-  aiSend.addEventListener('click', () => {
+  // ThunderBolt AI with OpenAI backend
+  aiSend.addEventListener('click', async () => {
     const userText = aiInput.value.trim();
     if (!userText) return;
     addMessage('You', userText);
     aiInput.value = '';
 
-    let reply = '';
-    if (userText.toLowerCase().includes('price')) {
-      reply = '⚡ Our premium snapbacks and 9Forty caps start at K50. Accessories are available at great prices.';
-    } else if (userText.toLowerCase().includes('delivery')) {
-      reply = '⚡ Fast delivery across Papua New Guinea — usually within 1 business day.';
-    } else if (userText.toLowerCase().includes('style')) {
-      reply = '⚡ We stock Snapbacks,NRL Style, 9Forty styles, and limited‑edition branded caps. Which style interests you most?';
-    } else if (userText.toLowerCase().includes('order')) {
-      reply = '⚡ Place your order directly via WhatsApp for secure payments and faster delivery.';
-    } else {
-      reply = '⚡Hi, I can help with prices, styles, delivery, or ordering. Connect via WhatsApp.';
+    try {
+      const response = await fetch('/chatbot', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: userText })
+      });
+      const data = await response.json();
+      addMessage('ThunderBolt AI', data.reply);
+    } catch (error) {
+      addMessage('ThunderBolt AI', '⚡ Connection issue — please try again.');
     }
-
-    setTimeout(() => addMessage('ThunderBolt AI', reply), 500);
   });
 </script>
+import express from "express";
+import bodyParser from "body-parser";
+import fetch from "node-fetch";
+
+const app = express();
+app.use(bodyParser.json());
+
+app.post("/chatbot", async (req, res) => {
+  const userMessage = req.body.message;
+
+  try {
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        model: "gpt-4o-mini",
+        messages: [
+          { role: "system", content: "You are ThunderBolt AI, a fast and friendly assistant for Mishella Premium Caps & Accessories. Products: Premium Caps (Snapbacks, 9Forty styles), Accessories (bags). Services: Secure Payments, Fast Delivery, WhatsApp Orders. Always respond quickly, clearly, and with ⚡ energy." },
+          { role: "user", content: userMessage }
+        ]
+      })
+    });
+
+    const data = await response.json();
+    const reply = data.choices[0].message.content;
+    res.json({ reply });
+  } catch (error) {
+    res.json({ reply: "⚡ Sorry, I couldn’t process that right now." });
+  }
+});
+
+app.listen(3000, () => console.log("ThunderBolt AI server running on port 3000"));
