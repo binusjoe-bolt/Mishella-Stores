@@ -500,7 +500,7 @@ function aiReply(text){
     return "Here's our current pricing:<br>🧢 Caps – PGK 50<br>👜 Floral Hand Bag – PGK 45<br>💄 Karité Lip Gloss – PGK 10<br>🧴 Deodorant Sprays – PGK 40<br>👛 Tote Bags (3 designs) – PGK 30 each<br><br>Want to order? Tap the WhatsApp button below!";
   }
   if(t.includes('deliver') || t.includes('shipping') || t.includes('ship')){
-    return "We deliver fast! 🚚<br>• Within Madang: 1–2 business days<br>• Nationwide PNG: via domestic freight (quoted before you order)<br><br>Message us on WhatsApp with your location for an exact estimate.";
+    return "We deliver fast! 🚚<br>• Within Madang: 1 business day<br>• Nationwide PNG: via domestic freight (quoted before you order)<br><br>Message us on WhatsApp with your location for an exact estimate.";
   }
   if(t.includes('style') || t.includes('cap') || t.includes('design') || t.includes('colour') || t.includes('color')){
     return "We carry Snapbacks, NRL team styles, 9Forty fits, and limited-edition branded caps 🧢 — plus floral &amp; black tote handbags, and 3 unique statement tote designs. Which are you interested in?";
@@ -521,11 +521,12 @@ function aiReply(text){
     return "Our Karité Luxury Velvet Lip Gloss comes in 6 rich shades — smooth, silky, and only PGK 10! 💄";
   }
   if(t.includes('hi') || t.includes('hello') || t.includes('hey')){
-    return "Hey there! 👋 Welcome to Mishella's Store. Ask me about prices, styles, delivery, or hours — or just tap WhatsApp to chat with a real person.";
+    return "Hey there! 👋 Welcome to Mishella's Store. Ask me about prices, styles, delivery, or Opening hours — or just tap WhatsApp to chat with a real person.";
   }
   return "I can help with prices, styles, delivery, payment or hours 🙂 For anything else — or to place your order — tap the green WhatsApp button and we'll help you directly!";
 }
-
+if(t.includes('Thank you') || t.includes('Thanks') || t.includes('Cheers')){
+   return "You welcome! 👋 Hope you enjoy our service and see you next time. Please don't hesitate to ask if you have any questions about prices, styles, delivery, or Opening hours — or just tap WhatsApp to chat with a real person.";
 function aiAddMsg(sender, html){
   const body = document.getElementById('aiBody');
   const div = document.createElement('div');
