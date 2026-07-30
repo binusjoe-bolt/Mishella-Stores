@@ -517,15 +517,15 @@ function showToast(msg){
 
     let reply = '';
     if (userText.toLowerCase().includes('price')) {
-      reply = '⚡ Our premium snapbacks and 9Forty caps start at K60. Accessories are available at great prices.';
+      reply = '⚡ Our premium snapbacks and 9Forty caps start at K50. Accessories are available at great prices.';
     } else if (userText.toLowerCase().includes('delivery')) {
-      reply = '⚡ Fast delivery across Papua New Guinea — usually within 3–5 business days.';
+      reply = '⚡ Fast delivery across Papua New Guinea — usually within 1 business day.';
     } else if (userText.toLowerCase().includes('style')) {
-      reply = '⚡ We stock Snapbacks, 9Forty styles, and limited‑edition branded caps. Which style interests you most?';
+      reply = '⚡ We stock Snapbacks,NRL Style, 9Forty styles, and limited‑edition branded caps. Which style interests you most?';
     } else if (userText.toLowerCase().includes('order')) {
       reply = '⚡ Place your order directly via WhatsApp for secure payments and faster delivery.';
     } else {
-      reply = '⚡ I can help with prices, styles, delivery, or ordering. Type "order" to connect via WhatsApp.';
+      reply = '⚡Hi, I can help with prices, styles, delivery, or ordering. Connect via WhatsApp.';
     }
 
     setTimeout(() => addMessage('ThunderBolt AI', reply), 500);
