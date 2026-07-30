@@ -430,3 +430,104 @@ function showToast(msg){
 </script>
 </body>
 </html>
+<!-- ThunderBolt AI Assistant Widget -->
+<div id="thunderbolt-ai">
+  <div id="ai-header">
+    <h3>⚡ ThunderBolt AI</h3>
+    <p>Instant help with Mishella Premium Caps & Accessories</p>
+  </div>
+  <div id="ai-body"></div>
+  <input type="text" id="ai-input" placeholder="Ask about caps, prices, or delivery..." />
+  <button id="ai-send">⚡ Ask</button>
+  <button id="ai-whatsapp">📱 Order via WhatsApp</button>
+</div>
+
+<style>
+  #thunderbolt-ai {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 360px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+    z-index: 9999;
+  }
+  #ai-header {
+    background: linear-gradient(90deg, #ffcc00, #000);
+    color: white;
+    padding: 12px;
+    text-align: center;
+    font-weight: bold;
+  }
+  #ai-body {
+    height: 280px;
+    overflow-y: auto;
+    padding: 10px;
+  }
+  #ai-input {
+    width: 70%;
+    padding: 8px;
+    border: none;
+    border-top: 1px solid #ccc;
+  }
+  #ai-send, #ai-whatsapp {
+    width: 30%;
+    background: #ffcc00;
+    color: black;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    font-weight: bold;
+  }
+  #ai-whatsapp {
+    background: #128C7E;
+    color: white;
+    margin-top: 5px;
+    width: 100%;
+  }
+</style>
+
+<script>
+  const aiBody = document.getElementById('ai-body');
+  const aiInput = document.getElementById('ai-input');
+  const aiSend = document.getElementById('ai-send');
+  const aiWhatsApp = document.getElementById('ai-whatsapp');
+
+  function addMessage(sender, text) {
+    const msg = document.createElement('div');
+    msg.innerHTML = `<strong>${sender}:</strong> ${text}`;
+    aiBody.appendChild(msg);
+    aiBody.scrollTop = aiBody.scrollHeight;
+  }
+
+  // WhatsApp direct link (replace with your business number)
+  aiWhatsApp.addEventListener('click', () => {
+    window.open('https://wa.me/675XXXXXXXX?text=Hi%20Mishella,%20I%20want%20to%20order%20a%20cap!', '_blank');
+  });
+
+  // ThunderBolt AI responses
+  aiSend.addEventListener('click', () => {
+    const userText = aiInput.value.trim();
+    if (!userText) return;
+    addMessage('You', userText);
+    aiInput.value = '';
+
+    let reply = '';
+    if (userText.toLowerCase().includes('price')) {
+      reply = '⚡ Our premium snapbacks and 9Forty caps start at K60. Accessories are available at great prices.';
+    } else if (userText.toLowerCase().includes('delivery')) {
+      reply = '⚡ Fast delivery across Papua New Guinea — usually within 3–5 business days.';
+    } else if (userText.toLowerCase().includes('style')) {
+      reply = '⚡ We stock Snapbacks, 9Forty styles, and limited‑edition branded caps. Which style interests you most?';
+    } else if (userText.toLowerCase().includes('order')) {
+      reply = '⚡ Place your order directly via WhatsApp for secure payments and faster delivery.';
+    } else {
+      reply = '⚡ I can help with prices, styles, delivery, or ordering. Type "order" to connect via WhatsApp.';
+    }
+
+    setTimeout(() => addMessage('ThunderBolt AI', reply), 500);
+  });
+</script>
