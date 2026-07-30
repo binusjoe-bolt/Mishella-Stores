@@ -437,9 +437,13 @@ function showToast(msg){
     <p>Instant help with Mishella Premium Caps & Accessories</p>
   </div>
   <div id="ai-body"></div>
-  <input type="text" id="ai-input" placeholder="Ask about caps, prices, or delivery..." />
+  <input type="text" id="ai-input" placeholder="Ask in English or Tok Pisin..." />
   <button id="ai-send">⚡ Ask</button>
   <button id="ai-whatsapp">📱 Order via WhatsApp</button>
+  <select id="lang-toggle">
+    <option value="english">🇬🇧 English</option>
+    <option value="tokpisin">🇵🇬 Tok Pisin</option>
+  </select>
 </div>
 
 <style>
@@ -488,6 +492,14 @@ function showToast(msg){
     margin-top: 5px;
     width: 100%;
   }
+  #lang-toggle {
+    width: 100%;
+    padding: 6px;
+    border: none;
+    background: #eee;
+    margin-top: 5px;
+    font-weight: bold;
+  }
 </style>
 
 <script>
@@ -495,6 +507,7 @@ function showToast(msg){
   const aiInput = document.getElementById('ai-input');
   const aiSend = document.getElementById('ai-send');
   const aiWhatsApp = document.getElementById('ai-whatsapp');
+  const langToggle = document.getElementById('lang-toggle');
 
   function addMessage(sender, text) {
     const msg = document.createElement('div');
@@ -515,11 +528,13 @@ function showToast(msg){
     addMessage('You', userText);
     aiInput.value = '';
 
+    const selectedLang = langToggle.value;
+
     try {
       const response = await fetch('/chatbot', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: userText })
+        body: JSON.stringify({ message: userText, language: selectedLang })
       });
       const data = await response.json();
       addMessage('ThunderBolt AI', data.reply);
@@ -537,6 +552,15 @@ app.use(bodyParser.json());
 
 app.post("/chatbot", async (req, res) => {
   const userMessage = req.body.message;
+  const language = req.body.language || "english";
+
+  let systemPrompt = "You are ThunderBolt AI, a fast and friendly assistant for Mishella Premium Caps & Accessories. Products: Premium Caps (Snapbacks, 9Forty styles), Accessories (bags). Services: Secure Payments, Fast Delivery, WhatsApp Orders. Always respond quickly, clearly, and with ⚡ energy.";
+
+  if (language === "tokpisin") {
+    systemPrompt += " Reply in Tok Pisin, keep it simple and clear.";
+  } else {
+    systemPrompt += " Reply in English.";
+  }
 
   try {
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -548,7 +572,7 @@ app.post("/chatbot", async (req, res) => {
       body: JSON.stringify({
         model: "gpt-4o-mini",
         messages: [
-          { role: "system", content: "You are ThunderBolt AI, a fast and friendly assistant for Mishella Premium Caps & Accessories. Products: Premium Caps (Snapbacks, 9Forty styles), Accessories (bags). Services: Secure Payments, Fast Delivery, WhatsApp Orders. Always respond quickly, clearly, and with ⚡ energy." },
+          { role: "system", content: systemPrompt },
           { role: "user", content: userMessage }
         ]
       })
