@@ -237,7 +237,7 @@ footer strong{color:var(--G)}
   <div class="ai-quick">
     <button onclick="aiQuick('prices')">💰 Prices</button>
     <button onclick="aiQuick('delivery')">🚚 Delivery</button>
-    <button onclick="aiQuick('styles')">🧢 Styles</button>
+    <button onclick="aiQuick('items')">🧢 Items</button>
     <button onclick="aiQuick('hours')">🕐 Hours</button>
   </div>
   <div class="ai-input-row">
@@ -249,7 +249,7 @@ footer strong{color:var(--G)}
 <nav>
   <a class="nav-logo" href="#">
     <span class="nav-logo-mark">M</span>
-    <span class="nav-logo-text">Mishella<span class="apos">'s</span> Store's<span class="nav-logo-sub">Premium Caps &amp; Accessories</span></span>
+    <span class="nav-logo-text">Mishella's<span class="apos"></span> Store<span class="nav-logo-sub">Premium Caps &amp; Accessories</span></span>
   </a>
   <div class="nav-links" id="navLinks">
     <a href="#products">Products</a>
@@ -500,7 +500,7 @@ function aiReply(text){
     return "Here's our current pricing:<br>🧢 Caps – PGK 50<br>👜 Floral Hand Bag – PGK 45<br>💄 Karité Lip Gloss – PGK 10<br>🧴 Deodorant Sprays – PGK 40<br>👛 Tote Bags (3 designs) – PGK 30 each<br><br>Want to order? Tap the WhatsApp button below!";
   }
   if(t.includes('deliver') || t.includes('shipping') || t.includes('ship')){
-    return "We deliver fast! 🚚<br>• Within Madang: 1–2 business days<br>• Nationwide PNG: via domestic freight (quoted before you order)<br><br>Message us on WhatsApp with your location for an exact estimate.";
+    return "We deliver fast! 🚚<br>• Within Madang: 1 business days<br>• Nationwide PNG:1 business via domestic freight (quoted before you order)<br><br>Message us on WhatsApp with your location for an exact estimate.";
   }
   if(t.includes('style') || t.includes('cap') || t.includes('design') || t.includes('colour') || t.includes('color')){
     return "We carry Snapbacks, NRL team styles, 9Forty fits, and limited-edition branded caps 🧢 — plus floral &amp; black tote handbags, and 3 unique statement tote designs. Which are you interested in?";
@@ -521,7 +521,7 @@ function aiReply(text){
     return "Our Karité Luxury Velvet Lip Gloss comes in 6 rich shades — smooth, silky, and only PGK 10! 💄";
   }
   if(t.includes('hi') || t.includes('hello') || t.includes('hey')){
-    return "Hey there! 👋 Welcome to Mishella's Store. Ask me about prices, styles, delivery, or hours — or just tap WhatsApp to chat with a real person.";
+    return "Hello and! 👋 welcome to Mishella's Store. Ask me about prices, styles, delivery, or hours — or just tap WhatsApp to chat with a real person.";
   }
   return "I can help with prices, styles, delivery, payment or hours 🙂 For anything else — or to place your order — tap the green WhatsApp button and we'll help you directly!";
 }
