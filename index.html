@@ -523,7 +523,8 @@ function aiReply(text){
   if(t.includes('hi') || t.includes('hello') || t.includes('hey')|| t.includes('Thanks you')){
     return "Hello and welcome Mishella's Store, excited to see you here. How can I assist you today 🙂 To speak someone else just tap WhatsApp to chat with a real person.";
   }
-  return "Hello and welcome Mishella's Store, excited to see you here. How can I assist you today 🙂 To speak someone else — or to place your order — tap the green WhatsApp button and we'll help you directly!";
+   if(t.includes('Thank you') || t.includes('Thnaks') || t.includes('Bye')|| t.includes('Cheers')){
+  return "Your welcome and we hope to see you again. You have a wonderful day today 🙂 To speak someone else — or to place your order — tap the green WhatsApp button and we'll help you directly!";
  }
 function aiAddMsg(sender, html){
   const body = document.getElementById('aiBody');
