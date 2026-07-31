@@ -523,7 +523,9 @@ function aiReply(text){
   if(t.includes('hi') || t.includes('hello') || t.includes('hey')|| t.includes('Thanks you')){
     return "Hello and welcome Mishella's Store, excited to see you here. How can I assist you today 🙂 To speak someone else just tap WhatsApp to chat with a real person.";
   }
+   return "I can help with prices, styles, delivery, payment or hours 🙂 For anything else — or to place your order — tap the green WhatsApp button and we'll help you directly!";
 function aiAddMsg(sender, html){
+  }
   const body = document.getElementById('aiBody');
   const div = document.createElement('div');
   div.className = 'ai-msg ' + (sender==='user' ? 'user' : 'bot');
