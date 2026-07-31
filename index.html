@@ -237,7 +237,7 @@ footer strong{color:var(--G)}
   <div class="ai-quick">
     <button onclick="aiQuick('prices')">💰 Prices</button>
     <button onclick="aiQuick('delivery')">🚚 Delivery</button>
-    <button onclick="aiQuick('items')">🧢 Items</button>
+    <button onclick="aiQuick('styles')">🧢 Styles</button>
     <button onclick="aiQuick('hours')">🕐 Hours</button>
   </div>
   <div class="ai-input-row">
@@ -502,7 +502,7 @@ function aiReply(text){
   if(t.includes('deliver') || t.includes('shipping') || t.includes('ship')){
     return "We deliver fast! 🚚<br>• Within Madang: 1 business days<br>• Nationwide PNG:1 business via domestic freight (quoted before you order)<br><br>Message us on WhatsApp with your location for an exact estimate.";
   }
-  if(t.includes('items') || t.includes('cap') || t.includes('design') || t.includes('colour') || t.includes('color')){
+  if(t.includes('style') || t.includes('cap') || t.includes('design') || t.includes('colour') || t.includes('color')){
     return "We carry Snapbacks, NRL team styles, 9Forty fits, and limited-edition branded caps 🧢 — plus floral &amp; black tote handbags, and 3 unique statement tote designs. Which are you interested in?";
   }
   if(t.includes('hour') || t.includes('open') || t.includes('time')){
@@ -548,7 +548,7 @@ function aiQuick(topic){
   const map = {
     prices: "What are your prices?",
     delivery: "Tell me about delivery",
-    styles: "What items do you have?",
+    styles: "What styles do you have?",
     hours: "What are your hours?"
   };
   const text = map[topic];
