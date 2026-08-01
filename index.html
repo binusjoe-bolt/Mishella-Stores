@@ -506,7 +506,7 @@ function aiReply(text){
     return "We carry Snapbacks, NRL team styles, 9Forty fits, and limited-edition branded caps 🧢 — plus floral &amp; black tote handbags, and 3 unique statement tote designs. Which are you interested in?";
   }
   if(t.includes('business hour') || t.includes('open') || t.includes('time')){
-    return "Our hours are:<br>Mon–Sat: 8am – 6pm<br>Sunday: Closed<br><br>You can message us on WhatsApp any time — we reply as soon as we're open!";
+    return "Our business hours are:<br>Mon–Sat: 8am – 6pm<br>Sunday: Closed<br><br>You can message us on WhatsApp any time — we reply as soon as we're open!";
   }
   if(t.includes('location') || t.includes('where') || t.includes('address')){
     return "We're based in Madang, Papua New Guinea 🇵🇬 — and we deliver locally and nationwide across PNG.";
@@ -549,7 +549,7 @@ function aiQuick(topic){
     prices: "What are your prices?",
     delivery: "Tell me about delivery",
     items: "What items do you have?",
-    hours: "What are your business hours?"
+    hours: "What are your hours?"
   };
   const text = map[topic];
   aiAddMsg('user', text);
