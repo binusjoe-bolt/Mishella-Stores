@@ -190,6 +190,13 @@
             <input type="number" id="qtyLadies Hand bag(Black)" value="1" min="1">
             <button class="button" onclick="addToCart('Ladies Hand bag(Black)', 30, document.getElementById('qtyLadies Hand bag(Black)').value)">Add to Cart</button>
         </div> 
+         <div class="product">
+            <img src="BRO_PREM25-Retail_Tshirt_1.webp" alt="Broncos T-Shirt" style="width:100%; height:auto; border-radius:6px;">
+            <h3>Broncos T-Shirt (Black)</h3>
+            <p>PGK 60</p>
+            <input type="number" id="qtybroncos t-shirt(Black)" value="1" min="1">
+            <button class="button" onclick="addToCart('Broncos T-Shirt (Black)', 60, document.getElementById('qtybroncos t-shirt(Black)').value)">Add to Cart</button>
+             </div> 
     </section>
 
     <section id="cart" class="cart">
