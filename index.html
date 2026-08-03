@@ -536,7 +536,8 @@ function aiReply(text){
   }
   return "I can help with prices, styles, delivery, payment or business hours 🙂 For anything else — or to place your order — tap the green WhatsApp button and we'll help you directly!";
 }
-
+if(t.includes('lipstick') || t.includes('lip gloss') || t.includes('makeup') || t.includes('beauty')){
+    return "Our Karité Luxury Velvet Lip Gloss comes in 6 rich shades — smooth, silky, and only PGK 10! 💄";
 function aiAddMsg(sender, html){
   const body = document.getElementById('aiBody');
   const div = document.createElement('div');
